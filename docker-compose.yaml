@@ -3,7 +3,7 @@ services:
   test:
     environment:
       - PYTHONPATH=./src
-    image: "spark-test"
+    image: "my-project"
     volumes:
       - .:/app
     command: python3 -m pytest
