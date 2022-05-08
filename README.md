@@ -16,6 +16,8 @@ Run the following steps.
 1. docker build --tag my-project .
 2. `docker-compose up test`
 
+Add your unit tests to files inside the `tests` folder ... name your files `test_somename.py`
+
 ## Data Flow
 High level description of data source(s) and sink(s), as well as the general pattern and data flow through the pipeline.
 Discuss any assumptions made.
