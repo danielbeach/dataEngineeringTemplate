@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  test:
+    environment:
+      - PYTHONPATH=./src
+    image: "spark-test"
+    volumes:
+      - .:/app
+    command: python3 -m pytest
