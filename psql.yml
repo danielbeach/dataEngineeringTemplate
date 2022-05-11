@@ -1,0 +1,26 @@
+services:
+  psql:
+    image: postgres:14.1-alpine
+    hostname: postgres
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - SQL_CONNECTION=${SQL_CONNECTION}
+    ports:
+      - "5440:5432"
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+      - ./my-postgres.conf:/etc/postgresql/postgres.conf
+      - ./db/postgres/build/create_database.sql:/docker-entrypoint-initdb.d/create_database.sql
+    restart: always
+    networks:
+      - test-network
+
+volumes:
+  postgres-volume:
+    external: True
+
+networks:
+  test-network:
+    external: True
