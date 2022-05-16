@@ -21,3 +21,32 @@ Add your unit tests to files inside the `tests` folder ... name your files `test
 ## Data Flow
 High level description of data source(s) and sink(s), as well as the general pattern and data flow through the pipeline.
 Discuss any assumptions made.
+
+## Environment
+Compose supports declaring default environment variables in an environment file named .env placed in the project directory.
+
+The following syntax rules apply to the .env file:
+
+- Compose expects each line in an env file to be in VAR=VAL format.
+- Lines beginning with # are processed as comments and ignored.
+- Blank lines are ignored.
+- There is no special handling of quotation marks. This means that they are part of the VAL.
+
+## Database
+For persisting data into SQL, a sql container using an external volume allows
+for the database container to restart without losing data. 
+
+The database is added to a bridge network where other hosts on the network can 
+reach the database.
+
+`docker network create test-network`
+
+Start a PostgreSQL database
+
+`docker volume create postgres-volume`
+`docker-compose -f psql.yml up --build -d`
+
+Start a SQL Server database
+
+`docker volume create mssql-volume`
+`docker-compose -f mssql.yml up --build -d`

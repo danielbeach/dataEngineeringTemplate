@@ -1,0 +1,23 @@
+services:
+  mssql:
+    build: ./db/mssql 
+    hostname: mssql
+    environment:
+      - MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD}
+      - MSSQL_SQL_CONNECTION=${MSSQL_SQL_CONNECTION}
+      - ACCEPT_EULA="Y"
+    ports:
+      - "1440:1433"
+    volumes:
+      - mssql-volume:/var/opt/mssql
+    restart: always
+    networks:
+      - test-network
+
+volumes:
+  mssql-volume:
+    external: True
+
+networks:
+  test-network:
+    external: True

@@ -7,3 +7,9 @@ services:
     volumes:
       - .:/app
     command: python3 -m pytest
+    networks: 
+      - test-network
+
+networks:
+  test-network:
+    external: True
