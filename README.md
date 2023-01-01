@@ -21,3 +21,12 @@ Add your unit tests to files inside the `tests` folder ... name your files `test
 ## Data Flow
 High level description of data source(s) and sink(s), as well as the general pattern and data flow through the pipeline.
 Discuss any assumptions made.
+
+## Hooks
+If you have your own hooks, you can add them to git-hooks. 
+
+Use this command to add them to the appropriate folder then commit. 
+
+`sh git-hooks/copy_hooks.sh`
+
+Whatever is copied from git-hooks/copy_hooks.sh will replace anything set up using the pre-commit. 
